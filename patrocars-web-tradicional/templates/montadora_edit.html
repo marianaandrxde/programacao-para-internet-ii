@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Editar montadora {% endblock %}
+
+{% block content %}
+    <form action="/montadora_edit/{{ montadora.id }}" method="post">
+        <div class="area-form">
+        <section class="area-montadora">
+            <h4>Editar montadora</h4>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ montadora.nome }}" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais" name="pais" value="{{ montadora.pais }}" required>
+            </div>
+            <div class="form-group">
+                <label for="ano">Ano de Fundação</label>
+                <input type="number" class="form-control" id="ano" name="ano" value="{{ montadora.ano_fundacao }}" required>
+            </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        </section>
+        </div>
+    </form>
+
+
+{% endblock %}
