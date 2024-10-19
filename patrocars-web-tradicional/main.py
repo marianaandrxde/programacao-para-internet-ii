@@ -46,17 +46,17 @@ def montadora_form(request: Request):
 
 @app.get('/montadora_edit/{montadora_id}')
 async def montadora_form(request: Request, montadora_id: int):
-    montadora = repository.get_by_id(montadora_id)  # Obtém a montadora pelo ID
+    montadora = repository.get_by_id(montadora_id)  
     if not montadora:
-        return RedirectResponse('/montadoras_list', status_code=404)  # Ou outra lógica de erro
+        return RedirectResponse('/montadoras_list', status_code=404)  
     return templates.TemplateResponse("montadora_edit.html", {"request": request, "montadora": montadora})
 
 
 @app.get('/montadora_delete/{montadora_id}')
 async def montadora_form(request: Request, montadora_id: int):
-    montadora = repository.get_by_id(montadora_id)  # Obtém a montadora pelo ID
+    montadora = repository.get_by_id(montadora_id) 
     if not montadora:
-        return RedirectResponse('/montadoras_list', status_code=404)  # Ou outra lógica de erro
+        return RedirectResponse('/montadoras_list', status_code=404)
     return templates.TemplateResponse("montadora_delete.html", {"request": request, "montadora": montadora})
 
 
