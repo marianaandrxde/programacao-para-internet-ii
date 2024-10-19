@@ -5,11 +5,12 @@
 {% block title_page %} Montadoras {% endblock %}
 
 {% block content %}
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 <div class="d-flex justify-content-end">
   <a href="/montadoras_form" class="btn btn-primary">Adicionar montadora</a>
 </div>
 <div class="area-form">
-  <table class="table">
+  <table class="table sortable">
     <thead>
       <tr>
         <th scope="col">Nome da montadora</th>
