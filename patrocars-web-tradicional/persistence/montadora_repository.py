@@ -1,11 +1,11 @@
 from sqlmodel import Session, select
-from .utils import get_engine
 from models import Montadora
+from persistence import db
 
 class MontadoraRepository():
 
   def __init__(self):
-    self.session = Session(get_engine())
+    self.session = Session(db.engine)
 
   def get_all(self):
     sttm = select(Montadora)
@@ -24,15 +24,12 @@ class MontadoraRepository():
   
 
   def update(self, montadora_id: int, updated_montadora: Montadora):
-        # Buscando a montadora existente
         existing_montadora = self.session.get(Montadora, montadora_id)
         if existing_montadora:
-            # Atualizando os campos desejados
             existing_montadora.nome = updated_montadora.nome
             existing_montadora.pais = updated_montadora.pais
             existing_montadora.ano_fundacao = updated_montadora.ano_fundacao
             
-            # Comitando as alterações
             self.session.commit()
             self.session.refresh(existing_montadora)
             return existing_montadora

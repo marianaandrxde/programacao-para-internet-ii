@@ -5,10 +5,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlmodel import SQLModel
-
-
+from persistence import db
 from models import Montadora
-from persistence.utils import get_engine
 from persistence.montadora_repository import MontadoraRepository
 from view_models import InputMontadora
 
@@ -20,12 +18,15 @@ app.mount("/images", StaticFiles(directory="images"), name="images")
 
 templates = Jinja2Templates(directory='templates')
 
-# Montadora
-SQLModel.metadata.create_all(get_engine())
+SQLModel.metadata.create_all(db.engine)
 
 montadoras: list[Montadora] = []
 
 repository = MontadoraRepository()
+
+@app.on_event("startup")
+def on_startup():
+    SQLModel.metadata.create_all(db.engine)
 
 @app.get('/montadoras_list')
 def montadora_list(request: Request):
