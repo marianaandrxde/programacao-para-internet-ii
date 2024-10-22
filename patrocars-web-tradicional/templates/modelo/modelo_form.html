@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Novo modelo {% endblock %}
+
+{% block content %}
+<form action="/modelo_save" method="post">
+  <div class="area-form">
+    <section class="area-montadora">
+      <h4>Novo Modelo</h4>
+      <select name="montadora_id" id="montadora_id" class="form-input">
+        {% for montadora in montadoras %}
+          <option value="{{ montadora.id }}">{{ montadora.nome }}</option>
+        {% endfor %}
+      </select>
+      <input type="text" class="form-input" name="nome" placeholder="Nome do modelo">
+      <input type="text" class="form-input" name="valor_referencia" placeholder="Valor referência">
+      <input type="text" class="form-input" name="motorizacao" placeholder="Motorização">
+      <input type="text" class="form-input" name="turbo" placeholder="Turbo?">
+      <input type="text" class="form-input" name="automatico" placeholder="Automático?">
+      <input type="submit" class="form-submit" 1value="Salvar Montadora">
+    </section>
+  </div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} Editar modelo {% endblock %}
+
+{% block content %}
+<form action="/modelo_edit/{{ modelo.id }}" method="post">
+    <div class="area-form">
+        <section class="area-montadora">
+            <h4>Editar modelo</h4>
+            <input type="hidden" id="montadora_id" name="montadora_id" value="{{ modelo.montadora_id }}">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ modelo.nome }}" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_referencia">Valor referência</label>
+                <input type="number" class="form-control" id="valor_referencia" name="valor_referencia"
+                    value="{{ modelo.valor_referencia }}" required>
+            </div>
+            <div class="form-group">
+                <label for="motorizacao">Motorização</label>
+                <input type="number" class="form-control" id="motorizacao" name="motorizacao"
+                    value="{{ modelo.motorizacao }}" required>
+            </div>
+            <div class="form-group">
+                <label for="turbo">Turbo?</label>
+                <input type="text" class="form-control" id="turbo" name="turbo" value="{{ modelo.turbo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="automatico">Automático?</label>
+                <input type="text" class="form-control" id="automatico" name="automatico"
+                    value="{{ modelo.automatico }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </section>
+    </div>
+</form>
+
+
+{% endblock %}

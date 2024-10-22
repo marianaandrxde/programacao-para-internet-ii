@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} Modelos {% endblock %}
+
+{% block title_page %} Modelo {% endblock %}
+
+{% block content %}
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+<div class="d-flex justify-content-end">
+  <a href="/modelos_form" class="btn btn-primary">Adicionar modelo</a>
+</div>
+<div class="area-form">
+  <table class="table sortable">
+    <thead>
+      <tr>
+        <th scope="col">Nome do modelo</th>
+        <th scope="col">Nome da montadora</th>
+        <th scope="col">Valor referencia</th>
+        <th scope="col">Motorização</th>
+        <th scope="col">Turbo</th>
+        <th scope="col">Automático</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for modelo in modelos %}
+      <tr>
+        <td>{{ modelo.nome }}</th>
+        <td>{{ modelo.montadora_id }}</td>
+        <td>{{ modelo.valor_referencia }}</td>
+        <td>{{ modelo.motorizacao }}</td>
+        <td>{{ modelo.turbo }}</td>
+        <td>{{ modelo.automatico }}</td>
+        <td>
+          <div class="btn-group" role="group"> 
+            <a class="btn btn-secondary" href="/modelo_edit/{{ modelo.id }}">Editar</a>
+            <a class="btn btn-dark" href="/modelo_delete/{{ modelo.id }}"> Excluir</a> 
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
