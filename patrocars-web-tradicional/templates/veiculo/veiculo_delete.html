@@ -32,18 +32,10 @@
                 <label for="automatico">Vendido</label>
                 <input type="text" class="form-control" id="vendido" name="vendido" value="{{ veiculo.vendido }}" required>
             </div>
-        <button type="submit" class="btn btn-primary">Excluir</button>
+        <button type="submit" class="btn btn-danger">Excluir</button>
         </section>
         </div>
     </form>
 
 
 {% endblock %}
-id: Optional[int] = Field(default=None, primary_key=True)
-modelo_id: int
-cor: str
-ano_fabricacao: int
-ano_modelo: int
-valor: int
-placa: str
-vendido: bool
