@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} Veículos {% endblock %}
+
+{% block title_page %} Veículo {% endblock %}
+
+{% block content %}
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+<div class="d-flex justify-content-end">
+  <a href="/veiculos_form" class="btn btn-primary">Adicionar veículo</a>
+</div>
+<div class="area-form">
+  <table class="table sortable">
+    <thead>
+      <tr>
+        <th scope="col">ID do Modelo</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Ano de fabricação</th>
+        <th scope="col">Ano do modelo</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Vendido</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for veiculo in veiculos %}
+      <tr>
+        <td>{{ veiculo.modelo_id }}</td>
+        <td>{{ veiculo.cor }}</td>
+        <td>{{ veiculo.ano_fabricacao }}</td>
+        <td>{{ veiculo.ano_modelo }}</td>
+        <td>{{ veiculo.valor }}</td>
+        <td>{{ veiculo.placa }}</td>
+        <td>{{ veiculo.vendido }}</td>
+        <td>
+          <div class="btn-group" role="group"> 
+            <a class="btn btn-secondary" href="/veiculo_edit/{{ veiculo.id }}">Editar</a>
+            <a class="btn btn-dark" href="/veiculo_delete/{{ veiculo.id }}"> Excluir</a> 
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

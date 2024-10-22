@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %} Deletar veiculo {% endblock %}
+
+{% block content %}
+    <form action="/veiculo_delete/{{ veiculo.id }}" method="post">
+        <div class="area-form">
+        <section class="area-montadora">
+            <h4>Deseja mesmo excluir veiculo?</h4>
+            <input type="hidden" id="modelo_id" name="modelo_id" value="{{ veiculo.modelo_id }}">
+            <div class="form-group">
+                <label for="valor_referencia">Cor</label>
+                <input type="text" class="form-control" id="cor" name="cor" value="{{ veiculo.cor }}" required>
+            </div>
+            <div class="form-group">
+                <label for="motorizacao">Ano de fabricação</label>
+                <input type="number" class="form-control" id="ano_fabricacao" name="ano_fabricacao" value="{{ veiculo.ano_fabricacao }}" required>
+            </div>
+            <div class="form-group">
+                <label for="turbo">Ano do modelo</label>
+                <input type="number" class="form-control" id="ano_modelo" name="ano_modelo" value="{{ veiculo.ano_modelo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="automatico">Valor</label>
+                <input type="number" class="form-control" id="valor" name="valor" value="{{ veiculo.valor }}" required>
+            </div>
+            <div class="form-group">
+                <label for="automatico">Placa</label>
+                <input type="text" class="form-control" id="placa" name="placa" value="{{ veiculo.placa }}" required>
+            </div>
+            <div class="form-group">
+                <label for="automatico">Vendido</label>
+                <input type="text" class="form-control" id="vendido" name="vendido" value="{{ veiculo.vendido }}" required>
+            </div>
+        <button type="submit" class="btn btn-primary">Excluir</button>
+        </section>
+        </div>
+    </form>
+
+
+{% endblock %}
+id: Optional[int] = Field(default=None, primary_key=True)
+modelo_id: int
+cor: str
+ano_fabricacao: int
+ano_modelo: int
+valor: int
+placa: str
+vendido: bool
