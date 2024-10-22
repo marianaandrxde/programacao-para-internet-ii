@@ -33,6 +33,17 @@ veiculo_repository = VeiculoRepository()
 def on_startup():
     SQLModel.metadata.create_all(db.engine)
 
+@app.get('/')
+def montadora_list(request: Request):
+  montadoras = montadora_repository.get_all()
+
+
+  return templates.TemplateResponse(
+    request=request, 
+    name='/montadora/montadora_list.html', 
+    context={'montadoras': montadoras}
+  )
+
 # Montadoras
     
 @app.get('/montadoras_list')
