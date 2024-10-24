@@ -21,10 +21,6 @@ templates = Jinja2Templates(directory='templates')
 
 SQLModel.metadata.create_all(db.engine)
 
-montadoras: list[Montadora] = []
-modelos: list[Modelo] = []
-veiculos: list[Veiculo] = []
-
 montadora_repository = MontadoraRepository()
 modelo_repository = ModeloRepository()
 veiculo_repository = VeiculoRepository()
